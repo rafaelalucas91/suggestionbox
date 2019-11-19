@@ -192,12 +192,12 @@ nav {}
                 @keyframes foldMiddle {
 
                     60% {
-                        box-shadow: inset 0px 0px 20px rgba(black, 0.2);
+                        box-shadow: inset 0px 200px 20px rgba(black, 0.2);
                     }
 
                     100% {
-                        box-shadow: inset 0px 200px 20px rgba(black, 0.3);
-                        background-color: #CBC4BD;
+                        box-shadow: inset 0px 0px 20px rgba(black, 0.3);
+
 
                     }
                 }
@@ -211,6 +211,11 @@ nav {}
                 @keyframes foldBottom {
                     0% {
                         transform: rotateX(0deg);
+                        box-shadow: inset 0px 0px 20px rgba(black, 0.2);
+                    }
+
+                    30% {
+                        box-shadow: inset 0px 50px 80px -20px rgba(black, 0.3);
                     }
 
                     100% {
