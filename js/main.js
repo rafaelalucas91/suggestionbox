@@ -1,7 +1,9 @@
 window.addEventListener("load", event => {
     var btnSend = document.querySelector('.send'),
         paper = document.querySelector('.paper'),
-        form = document.querySelector('.paper__form');
+        form = document.querySelector('.paper__form'),
+        input = document.querySelector('input'),
+        textarea = document.querySelector('textarea');
 
     btnSend.addEventListener('click', foldPaper);
 
@@ -9,6 +11,9 @@ window.addEventListener("load", event => {
         paper.classList.add('fold');
         form.classList.add('fade');
         btnSend.style.display = "none";
+        input.value = "";
+        textarea.value = "";
+
 
         setTimeout(function () {
             paper.classList.remove('fold');

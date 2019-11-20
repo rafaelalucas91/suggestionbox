@@ -42,6 +42,26 @@ body {
   background: linear-gradient(130deg, #3A3A3A 10%, #606060 90%);
 }
 
+main {
+  width: 100%;
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  padding: 60px 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -50,7 +70,14 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
-  height: 550px;
+  height: 520px;
+  width: 100%;
+}
+
+@media screen and (max-width: 511px) {
+  .wrapper {
+    height: 520px;
+  }
 }
 
 .btn {
@@ -84,21 +111,11 @@ body {
           transform: translateY(5px);
 }
 
-main {
+nav {
   width: 100%;
-  height: 100vh;
-  display: -ms-grid;
-  display: grid;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-  -ms-grid-rows: 1fr;
-      grid-template-rows: 1fr;
+  height: 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  position: fixed;
 }
 
 .paper {
@@ -106,18 +123,36 @@ main {
   margin: 0 auto;
   -webkit-perspective: 1800px;
           perspective: 1800px;
+  width: 400px;
+}
+
+@media screen and (max-width: 511px) {
+  .paper {
+    min-width: 280px;
+    max-width: 400px;
+    width: calc(100% - 40px);
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    height: 150px;
+  }
 }
 
 .paper__top, .paper__middle, .paper__bottom {
-  width: 400px;
+  width: 100%;
   height: 150px;
   overflow: hidden;
   background-color: #F9F4F0;
-  background-image: linear-gradient(90deg, transparent 58px, #FF6666 58px, #FF6666 60px, transparent 60px), linear-gradient(90deg, transparent 380px, #FF6666 370px, #FF6666 382px, transparent 382px), linear-gradient(#C8CEEE 1px, transparent 1px);
+  background-image: linear-gradient(90deg, transparent 58px, #FF6666 58px, #FF6666 60px, transparent 60px), linear-gradient(90deg, transparent 380px, #FF6666 380px, #FF6666 382px, transparent 382px), linear-gradient(#C8CEEE 1px, transparent 1px);
   background-size: 100% 25px;
   position: relative;
   -webkit-box-shadow: inset 0px -40px 40px -10px rgba(0, 0, 0, 0.1), inset 0px -10px 10px rgba(255, 255, 255, 0.3), inset 0px 0px 5px rgba(0, 0, 0, 0.3);
           box-shadow: inset 0px -40px 40px -10px rgba(0, 0, 0, 0.1), inset 0px -10px 10px rgba(255, 255, 255, 0.3), inset 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 511px) {
+  .paper__top, .paper__middle, .paper__bottom {
+    background-image: linear-gradient(90deg, transparent 38px, #FF6666 38px, #FF6666 40px, transparent 40px), linear-gradient(90deg, transparent calc(100% - 20px), #FF6666 calc(100% - 20px), #FF6666 calc(100% - 18px), transparent calc(100% - 18px)), linear-gradient(#C8CEEE 1px, transparent 1px);
+  }
 }
 
 .paper__top {
@@ -143,8 +178,18 @@ main {
   width: 320px;
 }
 
-.paper__form .name,
-.paper__form .title {
+@media screen and (max-width: 511px) {
+  .paper__form {
+    width: calc(100% - 60px);
+    left: 40px;
+  }
+}
+
+.paper__form.fade {
+  opacity: 0;
+}
+
+.paper__formName, .paper__formTitle {
   position: absolute;
   font-family: "Annie Use Your Telescope", cursive;
   font-size: 18px;
@@ -153,15 +198,21 @@ main {
   padding-left: 10px;
 }
 
-.paper__form .name {
+@media screen and (max-width: 511px) {
+  .paper__formName, .paper__formTitle {
+    padding-left: 10px;
+  }
+}
+
+.paper__formName {
   top: 30px;
 }
 
-.paper__form .title {
+.paper__formTitle {
   top: 80px;
 }
 
-.paper__form .form_container {
+.paper__formContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -172,8 +223,8 @@ main {
   width: 100%;
 }
 
-.paper__form .form_container input,
-.paper__form .form_container textarea {
+.paper__formContainer input,
+.paper__formContainer textarea {
   border: 0;
   background: transparent;
   position: absolute;
@@ -187,26 +238,22 @@ main {
   color: #38558F;
 }
 
-.paper__form .form_container input:focus,
-.paper__form .form_container textarea:focus {
+.paper__formContainer input:focus,
+.paper__formContainer textarea:focus {
   outline: 0;
 }
 
-.paper__form .form_container input {
+.paper__formContainer input {
   top: 26px;
   padding-left: 55px;
   height: 32px;
 }
 
-.paper__form .form_container textarea {
+.paper__formContainer textarea {
   top: 75px;
   padding-top: 29px;
   padding-left: 10px;
   height: 350px;
-}
-
-.paper__form.fade {
-  opacity: 0;
 }
 
 .paper.fold .paper__top, .paper.fold .paper__middle, .paper.fold .paper__bottom {
@@ -361,5 +408,73 @@ main {
     -webkit-transform: rotate(80deg);
             transform: rotate(80deg);
   }
+}
+
+.envelope {
+  width: 400px;
+  height: 150px;
+  position: absolute;
+}
+
+.envelope:before, .envelope:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 0;
+}
+
+.envelope:before {
+  left: 0;
+  border-top: 75px solid transparent;
+  border-bottom: 75px solid transparent;
+  border-left: 156px solid green;
+}
+
+.envelope:after {
+  right: 0;
+  border-top: 75px solid transparent;
+  border-bottom: 75px solid transparent;
+  border-right: 156px solid green;
+}
+
+.envelope__bottom, .envelope__top {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 200px solid transparent;
+  border-right: 200px solid transparent;
+  border-bottom: 98px solid white;
+  z-index: 2;
+}
+
+.envelope__top {
+  top: -98px;
+}
+
+.envelope__top:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  z-index: 3;
+  width: 210px;
+  height: 210px;
+  left: -105px;
+  -webkit-transform: rotate(45deg) skew(-19deg, -19deg);
+  transform: rotate(45deg) skew(-19deg, -19deg);
+  top: -7px;
+  opacity: 0.5;
+}
+
+.envelope__middle {
+  width: 0;
+  height: 0;
+  top: 0;
+  border-left: 200px solid transparent;
+  border-right: 200px solid transparent;
+  border-top: 100px solid white;
 }
 /*# sourceMappingURL=main.css.map */
