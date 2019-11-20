@@ -50,7 +50,7 @@ $orange: #F68A39;
 $red: #FF6666;
 $blue: #C8CEEE;
 $paper: #F9F4F0;
-$envelope: #F9F9F9;
+$envelope: #e8e8e8;
 
 $shadowPaper: inset 0px -40px 40px -10px rgba(rgb(0, 0, 0), 0.1),
 inset 0px -10px 10px rgba(white, 0.3),
@@ -138,6 +138,7 @@ main {
     transition: all 0.3s ease;
     bottom: 0px;
     cursor: pointer;
+    z-index: 4;
 
     &:hover {
         box-shadow: 0px 5px 15px -5px rgba($orange, 0.6);
@@ -164,6 +165,7 @@ nav {
     margin: 0 auto;
     perspective: 1800px;
     width: 400px;
+    z-index: 1;
     //display: none;
 
     @include xs {
@@ -288,13 +290,52 @@ nav {
             top: 75px;
             padding-top: 29px;
             padding-left: 10px;
-
             height: 350px;
         }
     }
 
+
     // To Fold the Paper!
     &.fold {
+        animation: paper 0.6s 1s ease both, paperInside 0.6s 2s ease forwards, paperBehind 0s 3.1s ease forwards;
+
+        @keyframes paper {
+            0% {
+                transform: rotate(0deg) translate(10px, 10px);
+            }
+
+            100% {
+                transform: rotate(20deg) translate(10px, -220px);
+            }
+        }
+
+        @keyframes paperInside {
+            0% {
+                transform: rotate(20deg) translate(10px, -220px);
+            }
+
+            50% {
+                transform: rotate(-10deg) translate(20px, -220px);
+            }
+
+            90% {
+                transform: rotate(0deg) translate(0px, 8px) scaleX(0.9);
+            }
+
+            100% {
+                transform: rotate(0deg) translate(0px, 8px) scaleX(0.9);
+            }
+        }
+
+        @keyframes paperBehind {
+
+
+            100% {
+                z-index: -1;
+                display: none;
+            }
+        }
+
         .paper {
 
             &__top,
@@ -362,37 +403,18 @@ nav {
                 }
             }
         }
-
-        //animation: teste 1s 1s ease forwards,
-        //teste2 1s 2s ease forwards;
-
-        @keyframes teste {
-            0% {}
-
-            100% {
-                transform: rotate(30deg);
-            }
-        }
-
-        @keyframes teste2 {
-            0% {}
-
-            100% {
-                transform: rotate(80deg);
-            }
-        }
-
     }
-
-
-
 }
 
 
 .envelope {
     width: 400px;
-    height: 150px;
+    height: 160px;
     position: absolute;
+    box-shadow: 4px 4px 20px -5px rgba(black, 0.6);
+    perspective: 1800px;
+    transform: rotate(-30deg) translate(-140px, -10px);
+    //z-index: -1;
 
     &:before,
     &:after {
@@ -401,55 +423,52 @@ nav {
         width: 0;
         height: 0;
         bottom: 0;
-
+        border-top: 75px solid transparent;
+        border-bottom: 85px solid transparent;
     }
 
     &:before {
         left: 0;
-        border-top: 75px solid transparent;
-        border-bottom: 75px solid transparent;
-        border-left: 156px solid green;
+        border-left: 178px solid darken($envelope, 4);
     }
 
     &:after {
         right: 0;
-        border-top: 75px solid transparent;
-        border-bottom: 75px solid transparent;
-        border-right: 156px solid green;
+        border-right: 178px solid darken($envelope, 4);
     }
 
-    &__bottom,
     &__top {
         position: absolute;
         bottom: 0;
         width: 0;
         height: 0;
+        top: 0;
         border-left: 200px solid transparent;
         border-right: 200px solid transparent;
-        border-bottom: 98px solid white;
-        //border-image: linear-gradient(45deg, blue, red);
-        z-index: 2;
+        border-bottom: 108px solid;
+        border-bottom-color: $envelope;
+        z-index: 1;
+        top: -107px;
+        box-shadow: 0px 4px 10px -10px rgba(black, 0.6);
+        transform-origin: bottom;
+        border-bottom-color: darken($envelope, 8);
+        transform: rotateX(-180deg);
 
-
-    }
-
-    &__top {
-        top: -98px;
-
+        // Inside Envelope Shadow (
         &:before {
-            content: '';
+            //content: '';
             position: absolute;
             width: 100%;
             height: 100%;
-            background-color: red;
+            background: linear-gradient(135deg, darken($envelope, 5), rgba(black, 0.2));
             z-index: 3;
             width: 210px;
             height: 210px;
             left: -105px;
-            -webkit-transform: rotate(45deg) skew(-19deg, -19deg);
             transform: rotate(45deg) skew(-19deg, -19deg);
-            top: -7px;
-            opacity: 0.5;
+            top: -8px;
+            box-shadow: inset -2px -2px 4px rgba(black, 0.15), inset 2px 2px 2px rgba(white, 1);
+            opacity: 0;
         }
     }
 
@@ -459,8 +478,85 @@ nav {
         top: 0;
         border-left: 200px solid transparent;
         border-right: 200px solid transparent;
-        border-top: 100px solid white;
+        border-top: 108px solid;
+        border-top-color: #bfbfbf;
+        transition: all 0.4s 0.2s ease;
     }
 
+    &__bottom {
+        width: 400px;
+        height: 85px;
+        overflow: hidden;
+        position: absolute;
+        bottom: 0;
+        //z-index: 3;
 
+        &:before {
+            content: '';
+            position: absolute;
+            border-left: 200px solid transparent;
+            border-right: 200px solid transparent;
+            border-bottom: 98px solid $envelope;
+            bottom: 0;
+        }
+    }
+
+    &.animeEnvelope {
+        animation: anime 0.6s 1s ease both;
+
+        @keyframes anime {
+            100% {
+                transform: rotate(0deg) translate(0px, 150px);
+            }
+        }
+
+        .envelope {
+            &__top {
+                animation: openEnvelope 0.6s 1.5s ease both, closeEnvelope 0.6s 2.8s ease forwards;
+
+                @keyframes openEnvelope {
+                    0% {
+                        transform: rotateX(-180deg);
+                    }
+
+                    100% {
+                        transform: rotateX(0deg);
+                    }
+                }
+
+                @keyframes closeEnvelope {
+                    100% {
+                        transform: rotateX(-180deg);
+                    }
+
+                    0% {
+                        transform: rotateX(0deg);
+                    }
+                }
+            }
+
+            &__middle {
+                border-top-color: #d2d2d2;
+            }
+        }
+    }
+
+    &.hidden {
+        z-index: 2;
+        opacity: 0;
+        animation: anime 0.6s 1s ease both, hidden 0s 2.68s ease forwards;
+
+        @keyframes hidden {
+
+            100% {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+
+.teste {
+    position: fixed;
+    top: 50px;
 }
