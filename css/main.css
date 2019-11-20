@@ -182,6 +182,8 @@ main {
           box-sizing: border-box;
   font-family: "Annie Use Your Telescope", cursive;
   font-size: 18px;
+  letter-spacing: 1px;
+  line-height: 25px;
   color: #38558F;
 }
 
@@ -200,8 +202,6 @@ main {
   top: 75px;
   padding-top: 29px;
   padding-left: 10px;
-  line-height: 25px;
-  letter-spacing: 1px;
   height: 350px;
 }
 
