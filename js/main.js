@@ -1,17 +1,28 @@
 window.addEventListener("load", event => {
-    var btnSend = document.querySelector('.send'),
+
+    const btnSend = document.querySelector('.send'),
         paper = document.querySelector('.paper'),
         form = document.querySelector('.paper__form'),
         input = document.querySelector('input'),
         textarea = document.querySelector('textarea'),
         envelope = document.querySelector('.envelope'),
         envelopeBack = document.querySelector('.envelopeBack'),
-        teste = document.querySelector('.teste');
+        formError = document.querySelector('.paper__formError');
 
-    btnSend.addEventListener('click', foldPaper);
-    teste.addEventListener('click', teste1);
+    const events = () => {
+        btnSend.addEventListener('click', foldPaper);
+        input.addEventListener('keyup', errorValidation);
+        textarea.addEventListener('keyup', errorValidation);
+    }
 
-    function foldPaper() {
+
+    const foldPaper = () => {
+
+        if (!input.value || !textarea.value) {
+            formError.classList.add('showError');
+            //return;
+        }
+
         paper.classList.add('fold');
         form.classList.add('fade');
         btnSend.style.display = "none";
@@ -20,9 +31,7 @@ window.addEventListener("load", event => {
         envelope.classList.add('animeEnvelope');
         envelopeBack.classList.add('show');
 
-
-
-        setTimeout(function () {
+        setTimeout(() => {
             paper.classList.remove('fold');
             btnSend.style.display = "block";
             form.classList.remove('fade');
@@ -32,15 +41,13 @@ window.addEventListener("load", event => {
         }, 200000);
     }
 
-
-    function teste1() {
-        if (envelope.classList.contains('openEnvelope')) {
-            envelope.classList.remove('openEnvelope');
-            envelope.classList.add('closeEnvelope');
-        } else {
-            envelope.classList.remove('closeEnvelope');
-            envelope.classList.add('openEnvelope');
+    const errorValidation = (event) => {
+        const currentTarget = event.currentTarget;
+        if (currentTarget.value) {
+            formError.classList.remove('showError');
         }
     }
 
+
+    events();
 });

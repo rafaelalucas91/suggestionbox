@@ -225,6 +225,7 @@ nav {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100%;
+  height: 428px;
 }
 
 .paper__formContainer input,
@@ -247,6 +248,16 @@ nav {
   outline: 0;
 }
 
+.paper__formContainer input::-moz-selection,
+.paper__formContainer textarea::-moz-selection {
+  background: white;
+}
+
+.paper__formContainer input::selection,
+.paper__formContainer textarea::selection {
+  background: white;
+}
+
 .paper__formContainer input {
   top: 26px;
   padding-left: 55px;
@@ -257,7 +268,32 @@ nav {
   top: 75px;
   padding-top: 29px;
   padding-left: 10px;
-  height: 350px;
+  height: 325px;
+  resize: none;
+}
+
+.paper__formError {
+  position: absolute;
+  opacity: 0;
+  bottom: -2px;
+  font-family: "Annie Use Your Telescope", cursive;
+  padding-left: 10px;
+  color: #FF6666;
+  letter-spacing: 1px;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  -webkit-transform: translateX(30px);
+          transform: translateX(30px);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.paper__formError.showError {
+  opacity: 1;
+  -webkit-transform: translateX(0px);
+          transform: translateX(0px);
 }
 
 .paper.fold {
@@ -293,10 +329,10 @@ nav {
   height: 160px;
 }
 
-@media screen and (max-width: 799px) {
+@media screen and (max-width: 511px) {
   .wrapperEnvelope {
-    -webkit-transform: scaleX(0.8);
-            transform: scaleX(0.8);
+    -webkit-transform: scaleX(0.85);
+            transform: scaleX(0.85);
   }
 }
 
@@ -404,7 +440,7 @@ nav {
   background-color: #dedede;
   -webkit-transform: translate(0px, 150px);
           transform: translate(0px, 150px);
-  z-index: -1;
+  z-index: -3;
   opacity: 0;
   -webkit-transition: all 0s 1.55s ease;
   transition: all 0s 1.55s ease;
@@ -412,20 +448,15 @@ nav {
           box-shadow: inset 0px -140px 50px -30px rgba(0, 0, 0, 0.15);
 }
 
-@media screen and (max-width: 799px) {
+@media screen and (max-width: 511px) {
   .envelopeBack {
-    -webkit-transform: scaleX(0.8) translate(0px, 150px);
-            transform: scaleX(0.8) translate(0px, 150px);
+    -webkit-transform: scaleX(0.85) translate(0px, 150px);
+            transform: scaleX(0.85) translate(0px, 150px);
   }
 }
 
 .envelopeBack.show {
   opacity: 1;
-}
-
-.teste {
-  position: fixed;
-  top: 50px;
 }
 
 @-webkit-keyframes paper {
@@ -552,10 +583,17 @@ nav {
             transform: rotate(30deg) translate(40px, -240px);
   }
   50% {
-    -webkit-transform: rotate(30deg) translate(-80px, -300px);
-            transform: rotate(30deg) translate(-80px, -300px);
+    -webkit-transform: rotate(20deg) translate(-30px, -300px);
+            transform: rotate(20deg) translate(-30px, -300px);
+  }
+  60% {
+    z-index: 1;
+  }
+  70% {
+    z-index: 0;
   }
   90% {
+    z-index: 0;
     -webkit-transform: rotate(0deg) translate(0px, 8px) scaleX(0.9);
             transform: rotate(0deg) translate(0px, 8px) scaleX(0.9);
   }
@@ -572,10 +610,17 @@ nav {
             transform: rotate(30deg) translate(40px, -240px);
   }
   50% {
-    -webkit-transform: rotate(30deg) translate(-80px, -300px);
-            transform: rotate(30deg) translate(-80px, -300px);
+    -webkit-transform: rotate(20deg) translate(-30px, -300px);
+            transform: rotate(20deg) translate(-30px, -300px);
+  }
+  60% {
+    z-index: 1;
+  }
+  70% {
+    z-index: 0;
   }
   90% {
+    z-index: 0;
     -webkit-transform: rotate(0deg) translate(0px, 8px) scaleX(0.9);
             transform: rotate(0deg) translate(0px, 8px) scaleX(0.9);
   }

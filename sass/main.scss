@@ -166,6 +166,7 @@ nav {
     width: 400px;
     z-index: 1;
     transform: none;
+
     //display: none;
 
     @include xs {
@@ -259,6 +260,7 @@ nav {
         display: flex;
         flex-direction: column;
         width: 100%;
+        height: 428px;
 
         input,
         textarea {
@@ -277,6 +279,11 @@ nav {
                 outline: 0;
                 //background-color: rgba(orange, 0.1);
             }
+
+            &::selection {
+                background: white;
+
+            }
         }
 
         input {
@@ -290,10 +297,28 @@ nav {
             top: 75px;
             padding-top: 29px;
             padding-left: 10px;
-            height: 350px;
+            height: 325px;
+            resize: none;
         }
     }
 
+    &__formError {
+        position: absolute;
+        opacity: 0;
+        bottom: -2px;
+        font-family: $font-02;
+        padding-left: 10px;
+        color: $red;
+        letter-spacing: 1px;
+        transition: all 0.4s ease;
+        transform: translateX(30px);
+        user-select: none;
+
+        &.showError {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
 
     // To Fold the Paper!
     &.fold {
@@ -328,8 +353,8 @@ nav {
     width: 400px;
     height: 160px;
 
-    @include sm {
-        transform: scaleX(0.8);
+    @include xs {
+        transform: scaleX(0.85);
     }
 }
 
@@ -430,13 +455,13 @@ nav {
     position: absolute;
     background-color: darken($envelope, 4);
     transform: translate(0px, 150px);
-    z-index: -1;
+    z-index: -3;
     opacity: 0;
     transition: all 0s 1.55s ease;
     box-shadow: inset 0px -140px 50px -30px rgba(black, 0.15);
 
-    @include sm {
-        transform: scaleX(0.8) translate(0px, 150px);
+    @include xs {
+        transform: scaleX(0.85) translate(0px, 150px);
     }
 
     &.show {
@@ -444,10 +469,7 @@ nav {
     }
 }
 
-.teste {
-    position: fixed;
-    top: 50px;
-}
+
 
 
 
@@ -515,11 +537,20 @@ nav {
     }
 
     50% {
-        transform: rotate(30deg) translate(-80px, -300px);
+
+        transform: rotate(20deg) translate(-30px, -300px);
     }
 
+    60% {
+        z-index: 1;
+    }
+
+    70% {
+        z-index: 0;
+    }
 
     90% {
+        z-index: 0;
         transform: rotate(0deg) translate(0px, 8px) scaleX(0.9);
     }
 
@@ -567,10 +598,13 @@ nav {
 
 @keyframes closeEnvelope {
     100% {
+
         transform: rotateX(-180deg);
     }
 
+
     0% {
+
         transform: rotateX(0deg);
     }
 }

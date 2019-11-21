@@ -294,6 +294,10 @@ nav {
         }
     }
 
+    &__formError {
+        position: absolute;
+        display: none;
+    }
 
     // To Fold the Paper!
     &.fold {
