@@ -20,8 +20,9 @@
             <!-- Envelope -->
             <div class="wrapperEnvelope">
                 <section class="envelope">
-                    <div class="envelope__top"></div>
                     <div class="envelope__bottom"></div>
+                    <div class="envelope__top"></div>
+
                 </section>
             </div>
             <div class="envelopeBack"></div>
@@ -33,20 +34,23 @@
                 <div class="paper__middle"></div>
                 <div class="paper__bottom"></div>
                 <div class="paper__form">
-                    <p class="paper__formName">Nome:</p>
-                    <p class="paper__formTitle">Sugestão:</p>
+
                     <div class="paper__formContainer">
-                        <input type="text" spellcheck="false" autocorrect="off">
-                        <textarea name="" id="" cols="30" rows="10" spellcheck="false" autocorrect="off"></textarea>
+                        <label for="name" class="paper__formName">Nome:</label>
+                        <label for="suggestion" class="paper__formTitle">Sugestão:</label>
+
+                        <input id="name" type="text" spellcheck="false" autocorrect="off">
+                        <textarea name="" id="suggestion" cols="30" rows="10" spellcheck="false"
+                            autocorrect="off"></textarea>
                     </div>
-                    <p class="paper__formError">por favor preenche todos os campos!</p>
+                    <p class="paper__formError">preenche todos os campos!</p>
 
 
                 </div>
             </section>
             <!-- end Paper-->
 
-            <button class="btn send"> fold!</button>
+            <button class="btn send">enviar</button>
 
         </div>
 
