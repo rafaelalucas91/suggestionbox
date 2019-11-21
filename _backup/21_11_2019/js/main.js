@@ -4,8 +4,7 @@ window.addEventListener("load", event => {
         form = document.querySelector('.paper__form'),
         input = document.querySelector('input'),
         textarea = document.querySelector('textarea'),
-        envelope = document.querySelector('.envelope'),
-        envelopeBack = document.querySelector('.envelopeBack'),
+        envelope = document.querySelectorAll('.envelope'),
         teste = document.querySelector('.teste');
 
     btnSend.addEventListener('click', foldPaper);
@@ -17,18 +16,20 @@ window.addEventListener("load", event => {
         btnSend.style.display = "none";
         input.value = "";
         textarea.value = "";
-        envelope.classList.add('animeEnvelope');
-        envelopeBack.classList.add('show');
 
+
+        envelope.forEach(function (el) {
+            el.classList.add('animeEnvelope');
+        });
 
 
         setTimeout(function () {
             paper.classList.remove('fold');
             btnSend.style.display = "block";
             form.classList.remove('fade');
-            envelope.classList.remove('animeEnvelope');
-            envelopeBack.classList.remove('show');
-
+            envelope.forEach(function (el) {
+                el.classList.add('animeEnvelope');
+            });
         }, 200000);
     }
 
