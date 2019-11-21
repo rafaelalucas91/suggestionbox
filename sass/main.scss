@@ -74,7 +74,6 @@ $anime_paper: paper 0.6s 1s ease both,
 paperInside 0.5s 2s ease forwards,
 paperBehind 0s 3.1s ease forwards;
 
-
 // Fold the Paper
 $anime_foldTop: foldTop 1s ease forwards;
 $anime_foldMiddle: foldMiddle 1s ease forwards;
@@ -387,9 +386,9 @@ nav {
     &__formTitle {
         position: absolute;
         font-family: $font-02;
-        font-size: 18px;
+        font-size: 16px;
         color: $orange;
-        letter-spacing: 1px;
+        letter-spacing: 0.8px;
         padding-left: 10px;
 
         @include xs {
@@ -419,8 +418,8 @@ nav {
             width: 100%;
             box-sizing: border-box;
             font-family: $font-02;
-            font-size: 18px;
-            letter-spacing: 1px;
+            font-size: 16px;
+            letter-spacing: 0.8px;
             line-height: 25px;
             color: #38558F;
 
@@ -438,7 +437,7 @@ nav {
 
         input {
             top: 26px;
-            padding-left: 75px;
+            padding-left: 68px;
             //padding-top: 12px;
             height: 32px;
         }
