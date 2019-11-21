@@ -377,13 +377,12 @@ nav {
         border-right: 200px solid transparent;
         border-bottom: 108px solid;
         border-bottom-color: $envelope;
-        z-index: 4;
+        z-index: 3;
         top: -107px;
         box-shadow: 0px 4px 10px -10px rgba(black, 0.6);
         transform-origin: bottom;
         border-bottom-color: darken($envelope, 15);
         transform: rotateX(-180deg);
-
 
         &:before {
             content: '';
@@ -402,7 +401,7 @@ nav {
     &__bottom {
         position: absolute;
         bottom: 0;
-        z-index: 3;
+        z-index: 2;
         border: 0 solid transparent;
         border-width: 80px 200px;
         border-left-color: $envelope;
@@ -427,10 +426,13 @@ nav {
     &.animeEnvelope {
         animation: animeEnvelope 0.6s 1s ease both;
 
-
         .envelope {
             &__top {
                 animation: openEnvelope 0.6s 1.5s ease both, closeEnvelope 0.6s 2.5s ease forwards;
+            }
+
+            &__Bottom {
+                animation: envelopeBottom 0.6s 2.5s ease forwards;
             }
         }
     }
@@ -534,24 +536,21 @@ nav {
 @keyframes paperInside {
     0% {
         transform: rotate(30deg) translate(40px, -240px);
+        z-index: 5;
     }
+
 
     50% {
 
-        transform: rotate(20deg) translate(-30px, -300px);
+        transform: rotate(0deg) translate(0px, -300px);
     }
 
-    60% {
-        z-index: 1;
+    64% {
+        z-index: 5;
     }
 
-    70% {
+    65% {
         z-index: 0;
-    }
-
-    90% {
-        z-index: 0;
-        transform: rotate(0deg) translate(0px, 8px) scaleX(0.9);
     }
 
     100% {
@@ -559,6 +558,8 @@ nav {
         transform: rotate(0deg) translate(0px, 8px) scaleX(0.9);
     }
 }
+
+
 
 @keyframes paperBehind {
 
@@ -586,12 +587,14 @@ nav {
     }
 }
 
+
 @keyframes openEnvelope {
     0% {
         transform: rotateX(-180deg);
     }
 
     100% {
+        z-index: -1;
         transform: rotateX(0deg);
     }
 }
@@ -602,9 +605,8 @@ nav {
         transform: rotateX(-180deg);
     }
 
-
     0% {
-
+        z-index: 4;
         transform: rotateX(0deg);
     }
 }
