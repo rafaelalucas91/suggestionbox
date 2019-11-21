@@ -358,7 +358,7 @@ nav {
   border-right: 200px solid transparent;
   border-bottom: 108px solid;
   border-bottom-color: #e8e8e8;
-  z-index: 3;
+  z-index: 1;
   top: -107px;
   -webkit-box-shadow: 0px 4px 10px -10px rgba(0, 0, 0, 0.6);
           box-shadow: 0px 4px 10px -10px rgba(0, 0, 0, 0.6);
@@ -384,7 +384,6 @@ nav {
 .envelope__bottom {
   position: absolute;
   bottom: 0;
-  z-index: 2;
   border: 0 solid transparent;
   border-width: 80px 200px;
   border-left-color: #e8e8e8;
@@ -410,32 +409,13 @@ nav {
 }
 
 .envelope.animeEnvelope .envelope__top {
-  -webkit-animation: openEnvelope 0.6s 1.5s ease both, closeEnvelope 0.6s 2.5s ease forwards;
-          animation: openEnvelope 0.6s 1.5s ease both, closeEnvelope 0.6s 2.5s ease forwards;
+  -webkit-animation: openEnvelope 0.6s 1.5s ease both, closeEnvelope 0.6s 2.4s ease forwards;
+          animation: openEnvelope 0.6s 1.5s ease both, closeEnvelope 0.6s 2.4s ease forwards;
 }
 
 .envelope.animeEnvelope .envelope__Bottom {
   -webkit-animation: envelopeBottom 0.6s 2.5s ease forwards;
           animation: envelopeBottom 0.6s 2.5s ease forwards;
-}
-
-.envelope.hidden {
-  z-index: 2;
-  opacity: 0;
-  -webkit-animation: anime 0.6s 1s ease both, hidden 0s 2.68s ease forwards;
-          animation: anime 0.6s 1s ease both, hidden 0s 2.68s ease forwards;
-}
-
-@-webkit-keyframes hidden {
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes hidden {
-  100% {
-    opacity: 1;
-  }
 }
 
 .envelopeBack {
@@ -586,20 +566,20 @@ nav {
   0% {
     -webkit-transform: rotate(30deg) translate(40px, -240px);
             transform: rotate(30deg) translate(40px, -240px);
-    z-index: 5;
+    z-index: 1;
   }
   50% {
     -webkit-transform: rotate(0deg) translate(0px, -300px);
             transform: rotate(0deg) translate(0px, -300px);
   }
   64% {
-    z-index: 5;
+    z-index: 1;
   }
   65% {
-    z-index: 0;
+    z-index: -1;
   }
   100% {
-    z-index: 0;
+    z-index: -1;
     -webkit-transform: rotate(0deg) translate(0px, 8px) scaleX(0.9);
             transform: rotate(0deg) translate(0px, 8px) scaleX(0.9);
   }
@@ -609,20 +589,20 @@ nav {
   0% {
     -webkit-transform: rotate(30deg) translate(40px, -240px);
             transform: rotate(30deg) translate(40px, -240px);
-    z-index: 5;
+    z-index: 1;
   }
   50% {
     -webkit-transform: rotate(0deg) translate(0px, -300px);
             transform: rotate(0deg) translate(0px, -300px);
   }
   64% {
-    z-index: 5;
+    z-index: 1;
   }
   65% {
-    z-index: 0;
+    z-index: -1;
   }
   100% {
-    z-index: 0;
+    z-index: -1;
     -webkit-transform: rotate(0deg) translate(0px, 8px) scaleX(0.9);
             transform: rotate(0deg) translate(0px, 8px) scaleX(0.9);
   }

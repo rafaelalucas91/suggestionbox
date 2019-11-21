@@ -7,6 +7,7 @@ window.addEventListener("load", event => {
         textarea = document.querySelector('textarea'),
         envelope = document.querySelector('.envelope'),
         envelopeBack = document.querySelector('.envelopeBack'),
+        envelopeBottom = document.querySelector('.envelope__bottom'),
         formError = document.querySelector('.paper__formError');
 
     const events = () => {
@@ -30,6 +31,7 @@ window.addEventListener("load", event => {
         textarea.value = "";
         envelope.classList.add('animeEnvelope');
         envelopeBack.classList.add('show');
+        envelopeBottom.classList.add('showBottom');
 
         setTimeout(() => {
             paper.classList.remove('fold');
@@ -37,6 +39,7 @@ window.addEventListener("load", event => {
             form.classList.remove('fade');
             envelope.classList.remove('animeEnvelope');
             envelopeBack.classList.remove('show');
+            envelopeBottom.classList.remove('showBottom');
 
         }, 200000);
     }
