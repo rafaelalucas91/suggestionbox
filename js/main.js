@@ -29,6 +29,9 @@ window.addEventListener("load", event => {
         envelope.classList.add('animeEnvelope');
         envelopeBack.classList.add('show');
         envelopeWrapper.classList.add('animeEnvelopeWrapper');
+        setTimeout(() => {
+            envelopeWrapper.classList.add('overflow');
+        }, 3500);
 
         setTimeout(() => {
             input.value = "";
