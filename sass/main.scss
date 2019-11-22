@@ -98,11 +98,11 @@ envelopeWrapper2 1s 3.4s ease forwards;
 
 @keyframes paper {
     0% {
-        transform: rotate(0deg) translate(10px, 10px);
+        transform: rotate(0deg) translate(0px, 0px);
     }
 
     100% {
-        transform: rotate(30deg) translate(40px, -240px);
+        transform: rotate(30deg) translate(0px, -240px);
     }
 }
 
@@ -714,7 +714,7 @@ footer {
     background-color: $orange;
     position: absolute;
     border-radius: 1px 1px 1px 2px;
-    z-index: -2;
+    z-index: -4;
     right: 80px;
 
     &:before,
