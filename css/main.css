@@ -168,6 +168,7 @@
   100% {
     z-index: -1;
     display: none;
+    opacity: 0;
   }
 }
 
@@ -175,20 +176,119 @@
   100% {
     z-index: -1;
     display: none;
+    opacity: 0;
   }
 }
 
 @-webkit-keyframes animeEnvelope {
   100% {
-    -webkit-transform: rotate(0deg) translate(0px, 150px);
-            transform: rotate(0deg) translate(0px, 150px);
+    -webkit-transform: rotate(0deg) translate(0px, 300px);
+            transform: rotate(0deg) translate(0px, 300px);
   }
 }
 
 @keyframes animeEnvelope {
   100% {
+    -webkit-transform: rotate(0deg) translate(0px, 300px);
+            transform: rotate(0deg) translate(0px, 300px);
+  }
+}
+
+@-webkit-keyframes animeEnvelope2 {
+  0% {
+    -webkit-transform: rotate(0deg) translate(0px, 300px);
+            transform: rotate(0deg) translate(0px, 300px);
+  }
+  100% {
     -webkit-transform: rotate(0deg) translate(0px, 150px);
             transform: rotate(0deg) translate(0px, 150px);
+  }
+}
+
+@keyframes animeEnvelope2 {
+  0% {
+    -webkit-transform: rotate(0deg) translate(0px, 300px);
+            transform: rotate(0deg) translate(0px, 300px);
+  }
+  100% {
+    -webkit-transform: rotate(0deg) translate(0px, 150px);
+            transform: rotate(0deg) translate(0px, 150px);
+  }
+}
+
+@-webkit-keyframes envelopeWrapper {
+  100% {
+    -webkit-transform: rotate(0deg) translate(0px, 150px);
+            transform: rotate(0deg) translate(0px, 150px);
+  }
+}
+
+@keyframes envelopeWrapper {
+  100% {
+    -webkit-transform: rotate(0deg) translate(0px, 150px);
+            transform: rotate(0deg) translate(0px, 150px);
+  }
+}
+
+@-webkit-keyframes envelopeWrapper2 {
+  0% {
+    -webkit-transform: rotate(0deg) translate(0px, 150px);
+            transform: rotate(0deg) translate(0px, 150px);
+  }
+  30% {
+    -webkit-transform: rotate(-60deg) translate(200px, 20px) scaleX(0.8);
+            transform: rotate(-60deg) translate(200px, 20px) scaleX(0.8);
+  }
+  60% {
+    -webkit-transform: rotate(-90deg) translate(200px, 20px) scaleX(0.8);
+            transform: rotate(-90deg) translate(200px, 20px) scaleX(0.8);
+  }
+  100% {
+    overflow: hidden;
+    -webkit-transform: rotate(-90deg) translate(130px, 20px) scaleX(0.8);
+            transform: rotate(-90deg) translate(130px, 20px) scaleX(0.8);
+  }
+}
+
+@keyframes envelopeWrapper2 {
+  0% {
+    -webkit-transform: rotate(0deg) translate(0px, 150px);
+            transform: rotate(0deg) translate(0px, 150px);
+  }
+  30% {
+    -webkit-transform: rotate(-60deg) translate(200px, 20px) scaleX(0.8);
+            transform: rotate(-60deg) translate(200px, 20px) scaleX(0.8);
+  }
+  60% {
+    -webkit-transform: rotate(-90deg) translate(200px, 20px) scaleX(0.8);
+            transform: rotate(-90deg) translate(200px, 20px) scaleX(0.8);
+  }
+  100% {
+    overflow: hidden;
+    -webkit-transform: rotate(-90deg) translate(130px, 20px) scaleX(0.8);
+            transform: rotate(-90deg) translate(130px, 20px) scaleX(0.8);
+  }
+}
+
+@-webkit-keyframes envelopeEnter {
+  0% {
+    -webkit-transform: rotate(0deg) translate(0px, 150px);
+            transform: rotate(0deg) translate(0px, 150px);
+  }
+  100% {
+    -webkit-transform: rotate(0deg) translate(-430px, 150px);
+            transform: rotate(0deg) translate(-430px, 150px);
+  }
+}
+
+@keyframes envelopeEnter {
+  0% {
+    -webkit-transform: rotate(0deg) translate(0px, 150px);
+            transform: rotate(0deg) translate(0px, 150px);
+  }
+  100% {
+    -webkit-transform: rotate(0deg) translate(-430px, 150px);
+            transform: rotate(0deg) translate(-430px, 150px);
   }
 }
 
@@ -245,6 +345,20 @@
     z-index: -1;
     -webkit-transform: rotateX(0deg);
             transform: rotateX(0deg);
+  }
+}
+
+@-webkit-keyframes envelopeBackHide {
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes envelopeBackHide {
+  100% {
+    opacity: 0;
+    display: none;
   }
 }
 
@@ -420,8 +534,6 @@ nav {
 }
 
 .paper__form.fade {
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
   opacity: 0;
 }
 
@@ -532,8 +644,8 @@ nav {
 }
 
 .paper.fold {
-  -webkit-animation: paper 0.6s 1s ease both, paperInside 0.5s 2s ease forwards, paperBehind 0s 3.1s ease forwards;
-          animation: paper 0.6s 1s ease both, paperInside 0.5s 2s ease forwards, paperBehind 0s 3.1s ease forwards;
+  -webkit-animation: paper 0.6s 1s ease both, paperInside 0.5s 2s ease forwards, paperBehind 0s 2.7s ease forwards;
+          animation: paper 0.6s 1s ease both, paperInside 0.5s 2s ease forwards, paperBehind 0s 2.7s ease forwards;
 }
 
 .paper.fold .paper__top {
@@ -551,17 +663,28 @@ nav {
           animation: foldBottom 1s 0.3s ease forwards;
 }
 
-.wrapperEnvelope {
+.envelopeContainer {
   position: absolute;
   width: 400px;
   height: 160px;
 }
 
 @media screen and (max-width: 511px) {
-  .wrapperEnvelope {
+  .envelopeContainer {
     -webkit-transform: scaleX(0.85);
             transform: scaleX(0.85);
   }
+}
+
+.envelopeContainer .wrapperEnvelope {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.envelopeContainer .wrapperEnvelope.animeEnvelopeWrapper {
+  -webkit-animation: envelopeWrapper 0.6s 3s ease forwards, envelopeWrapper2 1s 3.4s ease forwards;
+          animation: envelopeWrapper 0.6s 3s ease forwards, envelopeWrapper2 1s 3.4s ease forwards;
 }
 
 .envelope {
@@ -572,8 +695,9 @@ nav {
           box-shadow: 4px 4px 20px -5px rgba(0, 0, 0, 0.6);
   -webkit-perspective: 1800px;
           perspective: 1800px;
-  -webkit-transform: rotate(-30deg) translate(-140px, -10px);
-          transform: rotate(-30deg) translate(-140px, -10px);
+  -webkit-transform: rotate(-30deg) translate(-200px, 100px);
+          transform: rotate(-30deg) translate(-200px, 100px);
+  top: -150px;
 }
 
 .envelope__top {
@@ -587,7 +711,7 @@ nav {
   border-bottom: 108px solid;
   border-bottom-color: #e8e8e8;
   z-index: 1;
-  top: -107px;
+  top: -108px;
   -webkit-box-shadow: 0px 4px 10px -10px rgba(0, 0, 0, 0.6);
           box-shadow: 0px 4px 10px -10px rgba(0, 0, 0, 0.6);
   -webkit-transform-origin: bottom;
@@ -632,8 +756,8 @@ nav {
 }
 
 .envelope.animeEnvelope {
-  -webkit-animation: animeEnvelope 0.6s 1s ease both;
-          animation: animeEnvelope 0.6s 1s ease both;
+  -webkit-animation: animeEnvelope 0.6s 1s ease both, animeEnvelope2 0.6s 3s ease forwards, envelopeEnter 0.6s 5s ease forwards;
+          animation: animeEnvelope 0.6s 1s ease both, animeEnvelope2 0.6s 3s ease forwards, envelopeEnter 0.6s 5s ease forwards;
 }
 
 .envelope.animeEnvelope .envelope__top {
@@ -665,5 +789,46 @@ nav {
 
 .envelopeBack.show {
   opacity: 1;
+  -webkit-animation: envelopeBackHide 0.2s 2.7s ease forwards;
+          animation: envelopeBackHide 0.2s 2.7s ease forwards;
+}
+
+.mailbox {
+  width: 280px;
+  height: 300px;
+  background-color: #F68A39;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  position: absolute;
+  border-radius: 1px 1px 1px 2px;
+  z-index: -2;
+}
+
+.mailbox:before, .mailbox:after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.mailbox:before {
+  height: 30px;
+  background-color: #C56117;
+  -webkit-transform: skewX(-55deg);
+          transform: skewX(-55deg);
+  top: -30px;
+  left: 21px;
+}
+
+.mailbox:after {
+  width: 43px;
+  background-color: #D67329;
+  right: -42px;
+  top: -15px;
+  -webkit-transform: skewY(-50deg);
+  transform: skewY(-35deg);
 }
 /*# sourceMappingURL=main.css.map */

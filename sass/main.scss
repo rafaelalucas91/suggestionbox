@@ -72,7 +72,7 @@ inset 0px -0px 5px rgba(black, 0.3);
 // Paper Container - Move
 $anime_paper: paper 0.6s 1s ease both,
 paperInside 0.5s 2s ease forwards,
-paperBehind 0s 3.1s ease forwards;
+paperBehind 0s 2.70s ease forwards;
 
 // Fold the Paper
 $anime_foldTop: foldTop 1s ease forwards;
@@ -80,10 +80,17 @@ $anime_foldMiddle: foldMiddle 1s ease forwards;
 $anime_foldBottom: foldBottom 1s 0.3s ease forwards;
 
 // Anime the envelope
-$anime_envelope: animeEnvelope 0.6s 1s ease both;
+$anime_envelope: animeEnvelope 0.6s 1s ease both,
+animeEnvelope2 0.6s 3s ease forwards,
+envelopeEnter 0.6s 5s ease forwards;
 
 $anime_openCloseEnvelope: openEnvelope 0.6s 1.5s ease both,
 closeEnvelope 0.6s 2.45s ease forwards;
+
+$anime_envelopeBackHide: envelopeBackHide 0.2s 2.70s ease forwards;
+
+$anime_envelopeWrapper: envelopeWrapper 0.6s 3s ease forwards,
+envelopeWrapper2 1s 3.4s ease forwards;
 
 
 //
@@ -173,6 +180,7 @@ closeEnvelope 0.6s 2.45s ease forwards;
     100% {
         z-index: -1;
         display: none;
+        opacity: 0;
     }
 }
 
@@ -183,7 +191,55 @@ closeEnvelope 0.6s 2.45s ease forwards;
 @keyframes animeEnvelope {
 
     100% {
+        transform: rotate(0deg) translate(0px, 300px);
+    }
+}
+
+@keyframes animeEnvelope2 {
+
+    0% {
+        transform: rotate(0deg) translate(0px, 300px);
+    }
+
+    100% {
         transform: rotate(0deg) translate(0px, 150px);
+    }
+}
+
+@keyframes envelopeWrapper {
+    100% {
+        transform: rotate(0deg) translate(0px, 150px);
+    }
+}
+
+
+@keyframes envelopeWrapper2 {
+    0% {
+        transform: rotate(0deg) translate(0px, 150px);
+    }
+
+    30% {
+        transform: rotate(-60deg) translate(200px, 20px) scaleX(0.8);
+    }
+
+    60% {
+        transform: rotate(-90deg)translate(200px, 20px) scaleX(0.8);
+    }
+
+    100% {
+        overflow: hidden;
+        transform: rotate(-90deg) translate(130px, 20px) scaleX(0.8);
+    }
+}
+
+@keyframes envelopeEnter {
+
+    0% {
+        transform: rotate(0deg) translate(-0px, 150px);
+    }
+
+    100% {
+        transform: rotate(0deg) translate(-430px, 150px);
     }
 }
 
@@ -211,6 +267,13 @@ closeEnvelope 0.6s 2.45s ease forwards;
     0% {
         z-index: -1;
         transform: rotateX(0deg);
+    }
+}
+
+@keyframes envelopeBackHide {
+    100% {
+        opacity: 0;
+        display: none;
     }
 }
 
@@ -372,14 +435,10 @@ nav {
             left: 40px;
         }
 
-
         // To hide the suggestion!
         &.fade {
-            transform: scale(1.2);
             opacity: 0;
         }
-
-
     }
 
     &__formName,
@@ -438,7 +497,6 @@ nav {
         input {
             top: 26px;
             padding-left: 68px;
-            //padding-top: 12px;
             height: 32px;
         }
 
@@ -490,7 +548,7 @@ nav {
     }
 }
 
-.wrapperEnvelope {
+.envelopeContainer {
     position: absolute;
     width: 400px;
     height: 160px;
@@ -498,6 +556,20 @@ nav {
     @include xs {
         transform: scaleX(0.85);
     }
+
+    .wrapperEnvelope {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+
+
+        &.animeEnvelopeWrapper {
+            animation: $anime_envelopeWrapper;
+
+        }
+    }
+
 }
 
 .envelope {
@@ -506,8 +578,8 @@ nav {
     position: absolute;
     box-shadow: 4px 4px 20px -5px rgba(black, 0.6);
     perspective: 1800px;
-    transform: rotate(-30deg) translate(-140px, -10px);
-    //z-index: -1;
+    transform: rotate(-30deg) translate(-200px, 100px);
+    top: -150px;
 
     &__top {
         position: absolute;
@@ -520,7 +592,7 @@ nav {
         border-bottom: 108px solid;
         border-bottom-color: $envelope;
         z-index: 1;
-        top: -107px;
+        top: -108px;
         box-shadow: 0px 4px 10px -10px rgba(black, 0.6);
         transform-origin: bottom;
         border-bottom-color: darken($envelope, 15);
@@ -593,5 +665,44 @@ nav {
 
     &.show {
         opacity: 1;
+        animation: $anime_envelopeBackHide;
+    }
+}
+
+.mailbox {
+    width: 280px;
+    height: 300px;
+    background-color: $orange;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 1px 1px 1px 2px;
+    z-index: -2;
+
+    &:before,
+    &:after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        top: 0;
+    }
+
+    &:before {
+        height: 30px;
+        background-color: #C56117;
+        transform: skewX(-55deg);
+        top: -30px;
+        left: 21px;
+    }
+
+    &:after {
+        width: 43px;
+        background-color: #D67329;
+        right: -42px;
+        top: -15px;
+        -webkit-transform: skewY(-50deg);
+        transform: skewY(-35deg);
     }
 }
