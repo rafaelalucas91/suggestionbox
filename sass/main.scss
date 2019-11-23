@@ -82,7 +82,7 @@ $anime_foldBottom: foldBottom 1s 0.3s ease forwards;
 // Anime the envelope
 $anime_envelope: animeEnvelope 0.6s 1s ease both,
 animeEnvelope2 0.6s 3s ease forwards,
-envelopeEnter 0.6s 5s ease forwards;
+envelopeEnter 0.6s 4.6s ease forwards;
 
 $anime_openCloseEnvelope: openEnvelope 0.6s 1.5s ease both,
 closeEnvelope 0.6s 2.45s ease forwards;
@@ -92,7 +92,8 @@ $anime_envelopeBackHide: envelopeBackHide 0.2s 2.70s ease forwards;
 $anime_envelopeWrapper: envelopeWrapper 0.6s 3s ease forwards,
 envelopeWrapper2 1s 3.4s ease forwards;
 
-
+$anime_mailbox: mailboxMove 1s 2.8s ease forwards,
+mailboxBack 1s 5.4s ease forwards;
 //
 // Keyframes Paper
 
@@ -221,13 +222,11 @@ envelopeWrapper2 1s 3.4s ease forwards;
         transform: rotate(-60deg) translate(200px, 20px) scaleX(0.8);
     }
 
-    60% {
-        transform: rotate(-90deg)translate(200px, 20px) scaleX(0.8);
-    }
+
 
     100% {
         overflow: hidden;
-        transform: rotate(-90deg) translate(130px, 20px) scaleX(0.8);
+        transform: rotate(-90deg) translate(84px, 0px) scaleX(0.8);
     }
 }
 
@@ -276,6 +275,26 @@ envelopeWrapper2 1s 3.4s ease forwards;
     }
 }
 
+//
+// Keyframes Mailbox
+@keyframes mailboxMove {
+
+    50% {
+        transform: translate(0, 30vh) rotate(20deg);
+    }
+
+    100% {
+        transform: translate(0, -10px) rotate(0deg);
+    }
+}
+
+@keyframes mailboxBack {
+
+    0% {
+        transform: translate(0, -10px) rotate(0deg);
+    }
+
+}
 
 
 // Reset CSS
@@ -295,6 +314,7 @@ envelopeWrapper2 1s 3.4s ease forwards;
 }
 
 body {
+    font-family: $font-01;
     margin: 0;
     padding: 0;
     background: linear-gradient(130deg, #3A3A3A 10%, #606060 90%);
@@ -312,6 +332,8 @@ main {
     grid-template-rows: 1fr;
     padding: 60px 0;
     box-sizing: border-box;
+    overflow-x: hidden;
+
 }
 
 // Wrapper for the Elements
@@ -382,7 +404,7 @@ footer {
     align-items: center;
     padding: 0 20px;
     box-sizing: border-box;
-    right: 0;
+    left: 0;
     transition: all 0.4s ease;
     cursor: default;
 
@@ -708,38 +730,149 @@ footer {
     }
 }
 
-.mailbox {
-    width: 280px;
-    height: 300px;
-    background-color: $orange;
+.wrapperMailbox {
+    width: 100%;
+    height: calc(100vh - 60px);
     position: absolute;
-    border-radius: 1px 1px 1px 2px;
-    z-index: -4;
-    right: 80px;
+    overflow: hidden;
+    z-index: -2;
 
-    &:before,
-    &:after {
-        position: absolute;
-        content: '';
+
+
+    .mailboxContent {
         width: 100%;
         height: 100%;
-        top: 0;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include sm {
+            height: 520px;
+            transform: scale(0.8) translatey(150px)
+        }
+
+        .mailbox {
+            width: 280px;
+            height: 300px;
+            background-color: $orange;
+            position: absolute;
+            border-radius: 1px 1px 1px 2px;
+            z-index: -4;
+            //right: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translate(45vw, 45vh) rotate(20deg);
+
+            @include xs {
+                transform: translate(50vw, 50vh) rotate(20deg);
+            }
+
+            &:before,
+            &:after {
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 100%;
+                top: 0;
+            }
+
+            &:before {
+                height: 30px;
+                background-color: #C56117;
+                transform: skewX(-55deg);
+                top: -30px;
+                left: 21px;
+            }
+
+            &:after {
+                width: 43px;
+                background-color: #D67329;
+                right: -42px;
+                top: -15px;
+                -webkit-transform: skewY(-50deg);
+                transform: skewY(-35deg);
+            }
+
+            &__front {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                width: calc(100% - 20px);
+                height: calc(100% - 20px);
+                border-radius: 3px;
+                box-shadow: inset 0px 0px 0px 5px rgba(white, 0.2);
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    width: 230px;
+                    height: 30px;
+                    top: 16px;
+                    background: #BE6624;
+                    box-shadow: inset 0px -10px 20px rgba(black, 0.4), 0px 2px 3px rgba(white, 0.5);
+                    z-index: -1;
+                    border-radius: 4px;
+                }
+            }
+
+            &__title,
+            &__number {
+                font-size: 20px;
+                line-height: 24px;
+                text-align: center;
+                letter-spacing: 0.25em;
+                text-transform: uppercase;
+                color: white;
+                text-shadow: 0px 3px 2px rgba(0, 0, 0, 0.25);
+                position: absolute;
+            }
+
+            &__title {
+                top: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &:before,
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 200px;
+                    height: 50px;
+                    background: rgba(white, 0.2);
+                    z-index: -1;
+                    border-radius: 6px;
+                }
+
+                &:after {
+                    background: transparent;
+                    border: solid 1px white;
+                    width: calc(200px - 8px);
+                    height: calc(50px - 8px);
+                    border-radius: 4px;
+                }
+            }
+
+            &__number {
+                bottom: 70px;
+                font-size: 24px;
+            }
+
+            &__logo {
+                position: absolute;
+                width: 32px;
+                bottom: 25px;
+                right: 25px;
+                opacity: 0.2;
+            }
+
+            &.moveMailbox {
+                animation: $anime_mailbox;
+            }
+        }
     }
 
-    &:before {
-        height: 30px;
-        background-color: #C56117;
-        transform: skewX(-55deg);
-        top: -30px;
-        left: 21px;
-    }
-
-    &:after {
-        width: 43px;
-        background-color: #D67329;
-        right: -42px;
-        top: -15px;
-        -webkit-transform: skewY(-50deg);
-        transform: skewY(-35deg);
-    }
 }
