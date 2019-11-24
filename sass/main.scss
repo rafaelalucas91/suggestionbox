@@ -46,7 +46,7 @@ cursive;
 }
 
 @mixin xxs {
-    @media screen and (max-width: 380px) {
+    @media screen and (max-width: 340px) {
         @content;
     }
 }
@@ -82,7 +82,9 @@ $anime_foldBottom: foldBottom 1s 0.3s ease forwards;
 // Anime the envelope
 $anime_envelope: animeEnvelope 0.6s 1s ease both,
 animeEnvelope2 0.6s 3s ease forwards,
-envelopeEnter 0.6s 4.6s ease forwards;
+envelopeEnter 0.6s 4.4s ease forwards;
+
+$envelopeShadow: envelopeShadow 0.6s 4.4s ease forwards;
 
 $anime_openCloseEnvelope: openEnvelope 0.6s 1.5s ease both,
 closeEnvelope 0.6s 2.45s ease forwards;
@@ -219,6 +221,7 @@ mailboxBack 1s 5.4s ease forwards;
     }
 
     30% {
+
         transform: rotate(-60deg) translate(200px, 20px) scaleX(0.8);
     }
 
@@ -226,20 +229,39 @@ mailboxBack 1s 5.4s ease forwards;
 
     100% {
         overflow: hidden;
-        transform: rotate(-90deg) translate(84px, 0px) scaleX(0.8);
+        transform: rotate(-90deg) translate(74px, -20px) scaleX(0.8) scaleY(1.2);
     }
 }
 
 @keyframes envelopeEnter {
 
     0% {
+
         transform: rotate(0deg) translate(-0px, 150px);
     }
 
     100% {
+        box-shadow: inset 0px 400px 10px black;
         transform: rotate(0deg) translate(-430px, 150px);
     }
 }
+
+@keyframes envelopeShadow {
+
+    0% {
+        z-index: 6;
+        box-shadow: inset 10px 0px 20px -10px rgba(black, 0.2);
+
+    }
+
+    80% {
+        z-index: 6;
+        box-shadow: inset 400px 0px 20px -10px rgba(black, 0.2);
+
+    }
+}
+
+
 
 @keyframes openEnvelope {
     0% {
@@ -284,14 +306,14 @@ mailboxBack 1s 5.4s ease forwards;
     }
 
     100% {
-        transform: translate(0, -10px) rotate(0deg);
+        transform: translate(-20px, 0px) rotate(0deg);
     }
 }
 
 @keyframes mailboxBack {
 
     0% {
-        transform: translate(0, -10px) rotate(0deg);
+        transform: translate(-20px, 0px) rotate(0deg);
     }
 
 }
@@ -333,6 +355,8 @@ main {
     padding: 60px 0;
     box-sizing: border-box;
     overflow-x: hidden;
+    position: relative;
+
 
 }
 
@@ -340,10 +364,11 @@ main {
 .wrapper {
     display: flex;
     justify-content: center;
-    position: relative;
+    position: absolute;
     height: 520px;
     width: 100%;
     transform: translateY(30px);
+    //background-color: rgba(red, 0.5);
 
     @include xs {
         height: 520px;
@@ -367,7 +392,7 @@ main {
     color: white;
     box-shadow: 0px 10px 25px -5px rgba($orange, 0.6);
     transition: all 0.3s ease;
-    bottom: 0px;
+
     cursor: pointer;
     z-index: 4;
 
@@ -377,6 +402,8 @@ main {
     }
 
     &.send {
+        bottom: 0px;
+        //margin-bottom: 60px;
         //transform: translateY(500px);
     }
 
@@ -642,6 +669,14 @@ footer {
     transform: rotate(-30deg) translate(-200px, 100px);
     top: -150px;
 
+    &:before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 6;
+    }
+
     &__top {
         position: absolute;
         bottom: 0;
@@ -701,6 +736,10 @@ footer {
     &.animeEnvelope {
         animation: $anime_envelope;
 
+        &:before {
+            animation: $envelopeShadow;
+        }
+
         .envelope {
             &__top {
                 animation: $anime_openCloseEnvelope;
@@ -733,23 +772,28 @@ footer {
 .wrapperMailbox {
     width: 100%;
     height: calc(100vh - 60px);
+    //height: 520px;
     position: absolute;
     overflow: hidden;
     z-index: -2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(30px);
 
 
 
     .mailboxContent {
         width: 100%;
-        height: 100%;
+        height: 520px;
         position: absolute;
         display: flex;
         justify-content: center;
         align-items: center;
+        //background-color: rgba(blue, 0.5);
 
         @include sm {
-            height: 520px;
-            transform: scale(0.8) translatey(150px)
+            // transform: scale(0.8) translatey(0px)
         }
 
         .mailbox {

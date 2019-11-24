@@ -241,8 +241,8 @@
   }
   100% {
     overflow: hidden;
-    -webkit-transform: rotate(-90deg) translate(84px, 0px) scaleX(0.8);
-            transform: rotate(-90deg) translate(84px, 0px) scaleX(0.8);
+    -webkit-transform: rotate(-90deg) translate(74px, -20px) scaleX(0.8) scaleY(1.2);
+            transform: rotate(-90deg) translate(74px, -20px) scaleX(0.8) scaleY(1.2);
   }
 }
 
@@ -257,8 +257,8 @@
   }
   100% {
     overflow: hidden;
-    -webkit-transform: rotate(-90deg) translate(84px, 0px) scaleX(0.8);
-            transform: rotate(-90deg) translate(84px, 0px) scaleX(0.8);
+    -webkit-transform: rotate(-90deg) translate(74px, -20px) scaleX(0.8) scaleY(1.2);
+            transform: rotate(-90deg) translate(74px, -20px) scaleX(0.8) scaleY(1.2);
   }
 }
 
@@ -268,6 +268,8 @@
             transform: rotate(0deg) translate(0px, 150px);
   }
   100% {
+    -webkit-box-shadow: inset 0px 400px 10px black;
+            box-shadow: inset 0px 400px 10px black;
     -webkit-transform: rotate(0deg) translate(-430px, 150px);
             transform: rotate(0deg) translate(-430px, 150px);
   }
@@ -279,8 +281,36 @@
             transform: rotate(0deg) translate(0px, 150px);
   }
   100% {
+    -webkit-box-shadow: inset 0px 400px 10px black;
+            box-shadow: inset 0px 400px 10px black;
     -webkit-transform: rotate(0deg) translate(-430px, 150px);
             transform: rotate(0deg) translate(-430px, 150px);
+  }
+}
+
+@-webkit-keyframes envelopeShadow {
+  0% {
+    z-index: 6;
+    -webkit-box-shadow: inset 10px 0px 20px -10px rgba(0, 0, 0, 0.2);
+            box-shadow: inset 10px 0px 20px -10px rgba(0, 0, 0, 0.2);
+  }
+  80% {
+    z-index: 6;
+    -webkit-box-shadow: inset 400px 0px 20px -10px rgba(0, 0, 0, 0.2);
+            box-shadow: inset 400px 0px 20px -10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@keyframes envelopeShadow {
+  0% {
+    z-index: 6;
+    -webkit-box-shadow: inset 10px 0px 20px -10px rgba(0, 0, 0, 0.2);
+            box-shadow: inset 10px 0px 20px -10px rgba(0, 0, 0, 0.2);
+  }
+  80% {
+    z-index: 6;
+    -webkit-box-shadow: inset 400px 0px 20px -10px rgba(0, 0, 0, 0.2);
+            box-shadow: inset 400px 0px 20px -10px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -360,8 +390,8 @@
             transform: translate(0, 30vh) rotate(20deg);
   }
   100% {
-    -webkit-transform: translate(0, -10px) rotate(0deg);
-            transform: translate(0, -10px) rotate(0deg);
+    -webkit-transform: translate(-20px, 0px) rotate(0deg);
+            transform: translate(-20px, 0px) rotate(0deg);
   }
 }
 
@@ -371,22 +401,22 @@
             transform: translate(0, 30vh) rotate(20deg);
   }
   100% {
-    -webkit-transform: translate(0, -10px) rotate(0deg);
-            transform: translate(0, -10px) rotate(0deg);
+    -webkit-transform: translate(-20px, 0px) rotate(0deg);
+            transform: translate(-20px, 0px) rotate(0deg);
   }
 }
 
 @-webkit-keyframes mailboxBack {
   0% {
-    -webkit-transform: translate(0, -10px) rotate(0deg);
-            transform: translate(0, -10px) rotate(0deg);
+    -webkit-transform: translate(-20px, 0px) rotate(0deg);
+            transform: translate(-20px, 0px) rotate(0deg);
   }
 }
 
 @keyframes mailboxBack {
   0% {
-    -webkit-transform: translate(0, -10px) rotate(0deg);
-            transform: translate(0, -10px) rotate(0deg);
+    -webkit-transform: translate(-20px, 0px) rotate(0deg);
+            transform: translate(-20px, 0px) rotate(0deg);
   }
 }
 
@@ -430,6 +460,7 @@ main {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   overflow-x: hidden;
+  position: relative;
 }
 
 .wrapper {
@@ -439,7 +470,7 @@ main {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  position: relative;
+  position: absolute;
   height: 520px;
   width: 100%;
   -webkit-transform: translateY(30px);
@@ -472,7 +503,6 @@ main {
           box-shadow: 0px 10px 25px -5px rgba(246, 138, 57, 0.6);
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  bottom: 0px;
   cursor: pointer;
   z-index: 4;
 }
@@ -482,6 +512,10 @@ main {
           box-shadow: 0px 5px 15px -5px rgba(246, 138, 57, 0.6);
   -webkit-transform: translateY(5px);
           transform: translateY(5px);
+}
+
+.btn.send {
+  bottom: 0px;
 }
 
 nav {
@@ -782,6 +816,14 @@ footer:hover img {
   top: -150px;
 }
 
+.envelope:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 6;
+}
+
 .envelope__top {
   position: absolute;
   bottom: 0;
@@ -838,8 +880,13 @@ footer:hover img {
 }
 
 .envelope.animeEnvelope {
-  -webkit-animation: animeEnvelope 0.6s 1s ease both, animeEnvelope2 0.6s 3s ease forwards, envelopeEnter 0.6s 4.6s ease forwards;
-          animation: animeEnvelope 0.6s 1s ease both, animeEnvelope2 0.6s 3s ease forwards, envelopeEnter 0.6s 4.6s ease forwards;
+  -webkit-animation: animeEnvelope 0.6s 1s ease both, animeEnvelope2 0.6s 3s ease forwards, envelopeEnter 0.6s 4.4s ease forwards;
+          animation: animeEnvelope 0.6s 1s ease both, animeEnvelope2 0.6s 3s ease forwards, envelopeEnter 0.6s 4.4s ease forwards;
+}
+
+.envelope.animeEnvelope:before {
+  -webkit-animation: envelopeShadow 0.6s 4.4s ease forwards;
+          animation: envelopeShadow 0.6s 4.4s ease forwards;
 }
 
 .envelope.animeEnvelope .envelope__top {
@@ -881,11 +928,22 @@ footer:hover img {
   position: absolute;
   overflow: hidden;
   z-index: -2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transform: translateY(30px);
+          transform: translateY(30px);
 }
 
 .wrapperMailbox .mailboxContent {
   width: 100%;
-  height: 100%;
+  height: 520px;
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -896,14 +954,6 @@ footer:hover img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-@media screen and (max-width: 799px) {
-  .wrapperMailbox .mailboxContent {
-    height: 520px;
-    -webkit-transform: scale(0.8) translatey(150px);
-            transform: scale(0.8) translatey(150px);
-  }
 }
 
 .wrapperMailbox .mailboxContent .mailbox {
