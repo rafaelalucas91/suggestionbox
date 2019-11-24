@@ -21,7 +21,7 @@ window.addEventListener("load", event => {
 
         if (!input.value || !textarea.value) {
             formError.classList.add('showError');
-            //return;
+            return;
         }
 
         paper.classList.add('fold');
