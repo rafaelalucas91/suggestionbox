@@ -261,8 +261,6 @@ mailboxBack 1s 5.4s ease forwards;
     }
 }
 
-
-
 @keyframes openEnvelope {
     0% {
         transform: rotateX(-180deg);
@@ -780,7 +778,6 @@ footer {
     justify-content: center;
     align-items: center;
     transform: translateY(30px);
-
 
 
     .mailboxContent {
