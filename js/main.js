@@ -68,12 +68,15 @@ window.addEventListener("load", event => {
         const body = document.querySelector('body');
 
 
-        var template = `
+        const template = `
             <div class="easterEgg">
             <img src="assets/fullsixlogo.svg" alt="">
             </div>`;
 
+
         body.insertAdjacentHTML('afterbegin', template);
+
+
     }
 
     events();
