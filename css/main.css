@@ -889,7 +889,7 @@ main {
   background-color: #dedede;
   -webkit-transform: translate(0px, 150px);
           transform: translate(0px, 150px);
-  z-index: -3;
+  z-index: -2;
   opacity: 0;
   -webkit-transition: all 0s 1.55s ease;
   transition: all 0s 1.55s ease;
@@ -1072,12 +1072,15 @@ main {
 .wrapperMailbox .mailboxContent .mailbox__title:after {
   background: transparent;
   border: solid 1px white;
-  width: calc(200px - 8px);
+  width: calc(200px - 9px);
   height: calc(50px - 8px);
   border-radius: 4px;
+  left: -31px;
+  top: -10px;
 }
 
 .wrapperMailbox .mailboxContent .mailbox__number {
+  position: absolute;
   bottom: 70px;
   font-size: 24px;
 }

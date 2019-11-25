@@ -858,25 +858,28 @@ main {
                     top: -10px;
                 }
             }
+
+            &__number {
+                position: absolute;
+                bottom: 70px;
+                font-size: 24px;
+            }
+
+            &__logo {
+                position: absolute;
+                width: 32px;
+                bottom: 25px;
+                right: 25px;
+                opacity: 0.2;
+            }
         }
 
-        &__number {
-            bottom: 70px;
-            font-size: 24px;
-        }
 
-        &__logo {
-            position: absolute;
-            width: 32px;
-            bottom: 25px;
-            right: 25px;
-            opacity: 0.2;
-        }
 
     }
 }
-}
 
+// Class for the animation
 .animeAll {
 
     // To Fold the Paper!

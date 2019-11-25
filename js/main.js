@@ -36,7 +36,7 @@ window.addEventListener("load", event => {
             wrapper.classList.remove('animeAll');
             wrapperMailbox.classList.remove('animeMailbox');
 
-        }, 200000);
+        }, 8000);
     }
 
     const errorValidation = (event) => {
