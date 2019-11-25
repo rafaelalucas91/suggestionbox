@@ -613,7 +613,7 @@ main {
   z-index: 1;
 }
 
-.paper:before {
+.paper:before, .paper:after {
   content: '';
   width: calc(100% - 10px);
   height: 450px;
@@ -629,6 +629,18 @@ main {
           transform: rotate(2deg);
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
+}
+
+.paper:after {
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  -webkit-filter: blur(20px);
+          filter: blur(20px);
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  opacity: 0.2;
+  z-index: -3;
 }
 
 @media screen and (max-width: 511px) {
@@ -825,8 +837,8 @@ main {
   width: 400px;
   height: 160px;
   position: absolute;
-  -webkit-box-shadow: 4px 4px 20px -5px rgba(0, 0, 0, 0.6);
-          box-shadow: 4px 4px 20px -5px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: -10px 10px 18px -8px rgba(0, 0, 0, 0.4);
+          box-shadow: -10px 10px 18px -8px rgba(0, 0, 0, 0.4);
   -webkit-perspective: 1800px;
           perspective: 1800px;
   -webkit-transform: rotate(-30deg) translate(-200px, 100px);
@@ -1134,6 +1146,7 @@ main {
   opacity: 0;
   -webkit-transition: all 0.6s ease;
   transition: all 0.6s ease;
+  visibility: hidden;
 }
 
 .reload__text {
@@ -1151,7 +1164,7 @@ main {
           animation: paper 0.6s 1s ease both, paperInside 0.5s 2s ease forwards, paperBehind 0s 2.7s ease forwards;
 }
 
-.animeAll .paper:before {
+.animeAll .paper:before, .animeAll .paper:after {
   opacity: 0;
 }
 
@@ -1219,5 +1232,6 @@ main {
   opacity: 1;
   -webkit-transform: translateY(0px);
           transform: translateY(0px);
+  visibility: visible;
 }
 /*# sourceMappingURL=main.css.map */
