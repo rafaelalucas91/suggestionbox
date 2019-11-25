@@ -15,17 +15,8 @@ window.addEventListener("load", event => {
         btnAnother.addEventListener('click', sendAnother);
         input.addEventListener('keyup', errorValidation);
         textarea.addEventListener('keyup', errorValidation);
-        window.addEventListener("keyup", enter)
     }
 
-    const enter = (e) => {
-
-        if (e.keyCode == 13) {
-
-            foldPaper();
-
-        }
-    }
 
     const foldPaper = () => {
 

@@ -468,6 +468,21 @@ main {
     width: 400px;
     z-index: 1;
 
+    &:before {
+        content: '';
+        width: calc(100% - 10px);
+        height: 450px;
+        position: absolute;
+        background-color: black;
+        opacity: 0.3;
+        z-index: -1;
+        top: 10px;
+        left: 10px;
+        filter: blur(6px);
+        transform: rotate(2deg);
+        transition: all 0.4s ease;
+    }
+
     @include xs {
         min-width: 280px;
         max-width: 320px;
@@ -534,6 +549,7 @@ main {
         color: $orange;
         letter-spacing: 0.8px;
         padding-left: 10px;
+        user-select: none;
 
         @include xs {
             padding-left: 10px;
@@ -541,11 +557,12 @@ main {
     }
 
     &__formName {
-        top: 30px;
+        top: 32px;
     }
 
     &__formTitle {
-        top: 80px;
+        top: 82px;
+        width: 100%;
     }
 
     &__formContainer {
@@ -587,8 +604,7 @@ main {
 
         textarea {
             top: 100px;
-            padding-top: 5px;
-            padding-left: 10px;
+            padding: 5px 10px 0 10px;
             height: 300px;
             resize: none;
         }
@@ -912,6 +928,10 @@ main {
     // To Fold the Paper!
     .paper {
         animation: $anime_paper;
+
+        &:before {
+            opacity: 0;
+        }
 
         &__top {
             animation: $anime_foldTop;
