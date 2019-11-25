@@ -714,7 +714,7 @@ main {
     position: absolute;
     background-color: darken($envelope, 4);
     transform: translate(0px, 150px);
-    z-index: -3;
+    z-index: -2;
     opacity: 0;
     transition: all 0s 1.55s ease;
     box-shadow: inset 0px -140px 50px -30px rgba(black, 0.15);
@@ -761,7 +761,6 @@ main {
             position: absolute;
             border-radius: 1px 1px 1px 2px;
             z-index: -4;
-            //right: 80px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -852,27 +851,30 @@ main {
                 &:after {
                     background: transparent;
                     border: solid 1px white;
-                    width: calc(200px - 8px);
+                    width: calc(200px - 9px);
                     height: calc(50px - 8px);
                     border-radius: 4px;
+                    left: -31px;
+                    top: -10px;
                 }
             }
-
-            &__number {
-                bottom: 70px;
-                font-size: 24px;
-            }
-
-            &__logo {
-                position: absolute;
-                width: 32px;
-                bottom: 25px;
-                right: 25px;
-                opacity: 0.2;
-            }
-
         }
+
+        &__number {
+            bottom: 70px;
+            font-size: 24px;
+        }
+
+        &__logo {
+            position: absolute;
+            width: 32px;
+            bottom: 25px;
+            right: 25px;
+            opacity: 0.2;
+        }
+
     }
+}
 }
 
 .animeAll {
