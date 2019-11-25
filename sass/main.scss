@@ -47,8 +47,9 @@ inset 0px -0px 5px rgba(black, 0.3);
 
 
 
-//
+//************************//
 // Animations
+//************************//
 
 // Paper Container - Move
 $anime_paper: paper 0.6s 1s ease both,
@@ -386,7 +387,6 @@ footer {
 }
 
 .btn {
-
     font-family: Montserrat;
     font-style: normal;
     font-weight: 600;
@@ -417,7 +417,6 @@ footer {
         //margin-bottom: 60px;
         //transform: translateY(500px);
     }
-
 }
 
 // Main Container
@@ -880,7 +879,6 @@ main {
     }
 }
 
-
 // Reload
 
 .reload {
@@ -904,7 +902,11 @@ main {
     }
 }
 
+
+//************************//
 // Class for the animation
+//************************//
+
 .animeAll {
 
     // To Fold the Paper!
