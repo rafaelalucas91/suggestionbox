@@ -460,6 +460,7 @@ main {
     }
 }
 
+// Paper
 .paper {
     position: relative;
     margin: 0 auto;
@@ -522,12 +523,6 @@ main {
         @include xs {
             width: calc(100% - 60px);
             left: 40px;
-        }
-
-        // To hide the suggestion!
-        &.fade {
-            transform: scale(0.5);
-            opacity: 0;
         }
     }
 
@@ -618,26 +613,9 @@ main {
         }
     }
 
-    // To Fold the Paper!
-    &.fold {
-        animation: $anime_paper;
-
-        .paper {
-            &__top {
-                animation: $anime_foldTop;
-            }
-
-            &__middle {
-                animation: $anime_foldMiddle;
-            }
-
-            &__bottom {
-                animation: $anime_foldBottom;
-            }
-        }
-    }
 }
 
+// Envelope
 .envelopeContainer {
     position: absolute;
     width: 400px;
@@ -651,16 +629,7 @@ main {
         position: absolute;
         width: 100%;
         height: 100%;
-
-        &.animeEnvelopeWrapper {
-            animation: $anime_envelopeWrapper;
-        }
-
-        &.overflow {
-            overflow: hidden;
-        }
     }
-
 }
 
 .envelope {
@@ -711,7 +680,6 @@ main {
             border: 0 solid transparent;
             border-width: 104px 200px;
             border-bottom-color: $envelope;
-
         }
     }
 
@@ -737,19 +705,7 @@ main {
         }
     }
 
-    &.animeEnvelope {
-        animation: $anime_envelope;
 
-        &:before {
-            animation: $envelopeShadow;
-        }
-
-        .envelope {
-            &__top {
-                animation: $anime_openCloseEnvelope;
-            }
-        }
-    }
 }
 
 .envelopeBack {
@@ -766,13 +722,9 @@ main {
     @include xs {
         transform: scaleX(0.85) translate(0px, 150px);
     }
-
-    &.show {
-        opacity: 1;
-        animation: $anime_envelopeBackHide;
-    }
 }
 
+// Mailbox
 .wrapperMailbox {
     width: 100%;
     height: calc(100vh - 60px);
@@ -919,9 +871,70 @@ main {
                 opacity: 0.2;
             }
 
-            &.moveMailbox {
-                animation: $anime_mailbox;
-            }
+        }
+    }
+}
+
+.animeAll {
+
+    // To Fold the Paper!
+    .paper {
+        animation: $anime_paper;
+
+        &__top {
+            animation: $anime_foldTop;
+        }
+
+        &__middle {
+            animation: $anime_foldMiddle;
+        }
+
+        &__bottom {
+            animation: $anime_foldBottom;
+        }
+
+        // To hide the suggestion!
+        &__form {
+            transform: scale(0.5);
+            opacity: 0;
+        }
+    }
+
+    // To anime the Envelope
+    .wrapperEnvelope {
+        animation: $anime_envelopeWrapper;
+
+        &.overflow {
+            overflow: hidden;
+        }
+    }
+
+    .envelope {
+        animation: $anime_envelope;
+
+        &:before {
+            animation: $envelopeShadow;
+        }
+
+        &__top {
+            animation: $anime_openCloseEnvelope;
+        }
+    }
+
+    .envelopeBack {
+        opacity: 1;
+        animation: $anime_envelopeBackHide;
+    }
+
+}
+
+.animeMailbox {
+
+    // To anime the Mailbox
+
+    .mailboxContent {
+        .mailbox {
+            animation: $anime_mailbox;
         }
     }
 

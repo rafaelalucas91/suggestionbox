@@ -1,14 +1,11 @@
 window.addEventListener("load", event => {
 
     const btnSend = document.querySelector('.send'),
-        paper = document.querySelector('.paper'),
-        form = document.querySelector('.paper__form'),
         input = document.querySelector('input'),
         textarea = document.querySelector('textarea'),
-        envelope = document.querySelector('.envelope'),
-        envelopeBack = document.querySelector('.envelopeBack'),
+        wrapper = document.querySelector('.wrapper'),
         envelopeWrapper = document.querySelector('.wrapperEnvelope'),
-        mailbox = document.querySelector('.mailbox'),
+        wrapperMailbox = document.querySelector('.wrapperMailbox'),
         formError = document.querySelector('.paper__formError');
 
     const events = () => {
@@ -24,13 +21,10 @@ window.addEventListener("load", event => {
             return;
         }
 
-        paper.classList.add('fold');
-        form.classList.add('fade');
+        wrapper.classList.add('animeAll');
+        wrapperMailbox.classList.add('animeMailbox');
         btnSend.style.display = "none";
-        envelope.classList.add('animeEnvelope');
-        envelopeBack.classList.add('show');
-        envelopeWrapper.classList.add('animeEnvelopeWrapper');
-        mailbox.classList.add('moveMailbox');
+
         setTimeout(() => {
             envelopeWrapper.classList.add('overflow');
         }, 3500);
@@ -38,14 +32,9 @@ window.addEventListener("load", event => {
         setTimeout(() => {
             input.value = "";
             textarea.value = "";
-            paper.classList.remove('fold');
             btnSend.style.display = "block";
-            form.classList.remove('fade');
-            envelope.classList.remove('animeEnvelope');
-            envelopeBack.classList.remove('show');
-            envelopeWrapper.classList.remove('animeEnvelopeWrapper');
-            mailbox.classList.remove('moveMailbox');
-
+            wrapper.classList.remove('animeAll');
+            wrapperMailbox.classList.remove('animeMailbox');
 
         }, 200000);
     }
