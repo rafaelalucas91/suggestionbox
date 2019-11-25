@@ -930,6 +930,44 @@ main {
     }
 }
 
+.easterEgg {
+    font-size: 100px;
+    color: white;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    img {
+        z-index: 8;
+        animation: easterEgg 1s ease both;
+
+        @keyframes easterEgg {
+            0% {
+                width: 20%;
+                opacity: 1;
+            }
+
+            80% {
+                width: 100%;
+                opacity: 0;
+
+            }
+
+            100% {
+                width: 100%;
+                opacity: 0;
+                display: none;
+                visibility: hidden;
+            }
+        }
+    }
+
+}
+
 
 //************************//
 // Class for the animation

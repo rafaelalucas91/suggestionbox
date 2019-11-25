@@ -15,8 +15,14 @@ window.addEventListener("load", event => {
         btnAnother.addEventListener('click', sendAnother);
         input.addEventListener('keyup', errorValidation);
         textarea.addEventListener('keyup', errorValidation);
+        window.addEventListener("keyup", easterEgg)
     }
 
+    const easterEgg = (e) => {
+        if (e.keyCode == 117) {
+            addEasterEgg();
+        }
+    }
 
     const foldPaper = () => {
 
@@ -55,6 +61,19 @@ window.addEventListener("load", event => {
         setTimeout(() => {
             wrapper.classList.remove('animeAll');
         }, 500);
+    }
+
+    const addEasterEgg = () => {
+
+        const body = document.querySelector('body');
+
+
+        var template = `
+            <div class="easterEgg">
+            <img src="assets/fullsixlogo.svg" alt="">
+            </div>`;
+
+        body.insertAdjacentHTML('afterbegin', template);
     }
 
     events();
