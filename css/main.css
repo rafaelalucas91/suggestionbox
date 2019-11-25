@@ -514,7 +514,6 @@ footer:hover img {
 }
 
 .btn {
-  position: absolute;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 600;
@@ -546,6 +545,7 @@ footer:hover img {
 
 .btn.send {
   bottom: 40px;
+  position: absolute;
 }
 
 main {
@@ -1093,6 +1093,37 @@ main {
   opacity: 0.2;
 }
 
+.reload {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-transform: translateY(100px);
+          transform: translateY(100px);
+  opacity: 0;
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}
+
+.reload__text {
+  color: white;
+  margin-bottom: 40px;
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  text-align: center;
+}
+
 .animeAll .paper {
   -webkit-animation: paper 0.6s 1s ease both, paperInside 0.5s 2s ease forwards, paperBehind 0s 2.7s ease forwards;
           animation: paper 0.6s 1s ease both, paperInside 0.5s 2s ease forwards, paperBehind 0s 2.7s ease forwards;
@@ -1149,8 +1180,18 @@ main {
           animation: envelopeBackHide 0.2s 2.7s ease forwards;
 }
 
+.animeAll .send {
+  display: none;
+}
+
 .animeMailbox .mailboxContent .mailbox {
   -webkit-animation: mailboxMove 1s 2.8s ease forwards, mailboxBack 1s 5.4s ease forwards;
           animation: mailboxMove 1s 2.8s ease forwards, mailboxBack 1s 5.4s ease forwards;
+}
+
+.animeReload {
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
 }
 /*# sourceMappingURL=main.css.map */

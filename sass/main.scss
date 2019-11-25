@@ -386,7 +386,7 @@ footer {
 }
 
 .btn {
-    position: absolute;
+
     font-family: Montserrat;
     font-style: normal;
     font-weight: 600;
@@ -413,6 +413,7 @@ footer {
 
     &.send {
         bottom: 40px;
+        position: absolute;
         //margin-bottom: 60px;
         //transform: translateY(500px);
     }
@@ -879,6 +880,30 @@ main {
     }
 }
 
+
+// Reload
+
+.reload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.6s ease;
+
+    &__text {
+        color: white;
+        margin-bottom: 40px;
+        font-size: 24px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        text-align: center;
+
+    }
+}
+
 // Class for the animation
 .animeAll {
 
@@ -931,6 +956,9 @@ main {
         animation: $anime_envelopeBackHide;
     }
 
+    .send {
+        display: none;
+    }
 }
 
 .animeMailbox {
@@ -943,4 +971,9 @@ main {
         }
     }
 
+}
+
+.animeReload {
+    opacity: 1;
+    transform: translateY(0px);
 }

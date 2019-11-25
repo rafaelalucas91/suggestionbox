@@ -1,17 +1,30 @@
 window.addEventListener("load", event => {
 
     const btnSend = document.querySelector('.send'),
+        btnAnother = document.querySelector('.another'),
         input = document.querySelector('input'),
         textarea = document.querySelector('textarea'),
         wrapper = document.querySelector('.wrapper'),
         envelopeWrapper = document.querySelector('.wrapperEnvelope'),
         wrapperMailbox = document.querySelector('.wrapperMailbox'),
-        formError = document.querySelector('.paper__formError');
+        formError = document.querySelector('.paper__formError'),
+        reload = document.querySelector('.reload');
 
     const events = () => {
         btnSend.addEventListener('click', foldPaper);
+        btnAnother.addEventListener('click', sendAnother);
         input.addEventListener('keyup', errorValidation);
         textarea.addEventListener('keyup', errorValidation);
+        window.addEventListener("keyup", enter)
+    }
+
+    const enter = (e) => {
+
+        if (e.keyCode == 13) {
+
+            foldPaper();
+
+        }
     }
 
     const foldPaper = () => {
@@ -23,20 +36,14 @@ window.addEventListener("load", event => {
 
         wrapper.classList.add('animeAll');
         wrapperMailbox.classList.add('animeMailbox');
-        btnSend.style.display = "none";
 
         setTimeout(() => {
             envelopeWrapper.classList.add('overflow');
         }, 3500);
 
         setTimeout(() => {
-            input.value = "";
-            textarea.value = "";
-            btnSend.style.display = "block";
-            wrapper.classList.remove('animeAll');
-            wrapperMailbox.classList.remove('animeMailbox');
-
-        }, 8000);
+            reload.classList.add('animeReload');
+        }, 6000);
     }
 
     const errorValidation = (event) => {
@@ -46,6 +53,18 @@ window.addEventListener("load", event => {
         }
     }
 
+    const sendAnother = () => {
+        input.value = "";
+        textarea.value = "";
+        reload.classList.remove('animeReload');
+        wrapperMailbox.classList.remove('animeMailbox');
+        envelopeWrapper.classList.remove('overflow');
+
+
+        setTimeout(() => {
+            wrapper.classList.remove('animeAll');
+        }, 500);
+    }
 
     events();
 });
