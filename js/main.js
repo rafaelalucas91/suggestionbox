@@ -15,10 +15,10 @@ window.addEventListener("load", event => {
         btnAnother.addEventListener('click', sendAnother);
         input.addEventListener('keyup', errorValidation);
         textarea.addEventListener('keyup', errorValidation);
-        window.addEventListener("keyup", easterEgg)
+        window.addEventListener("keyup", showEasterEgg)
     }
 
-    const easterEgg = (e) => {
+    const showEasterEgg = (e) => {
         if (e.keyCode == 117) {
             addEasterEgg();
         }
@@ -73,9 +73,13 @@ window.addEventListener("load", event => {
             <img src="assets/fullsixlogo.svg" alt="">
             </div>`;
 
-
         body.insertAdjacentHTML('afterbegin', template);
 
+        setTimeout(() => {
+
+            document.querySelector('.easterEgg').remove();
+
+        }, 1000);
 
     }
 
