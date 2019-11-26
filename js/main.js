@@ -11,11 +11,13 @@ window.addEventListener("load", event => {
         reload = document.querySelector('.reload');
 
     const events = () => {
+        serviceWorker();
         btnSend.addEventListener('click', foldPaper);
         btnAnother.addEventListener('click', sendAnother);
         input.addEventListener('keyup', errorValidation);
         textarea.addEventListener('keyup', errorValidation);
-        window.addEventListener("keyup", showEasterEgg)
+        window.addEventListener("keyup", showEasterEgg);
+
     }
 
     const showEasterEgg = (e) => {
@@ -83,5 +85,18 @@ window.addEventListener("load", event => {
 
     }
 
+    // PWA 
+    const serviceWorker = () => {
+        if ('serviceWorker' in navigator) {
+            try {
+                navigator.serviceWorker.register('sw.js')
+            } catch (error) {
+
+            }
+        }
+    }
+
+
     events();
+
 });
