@@ -489,7 +489,7 @@ body {
   position: absolute;
   width: 300px;
   right: 45px;
-  padding: 20px;
+  padding: 20px 25px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background-color: white;
@@ -501,7 +501,7 @@ body {
   opacity: 0;
   visibility: hidden;
   font-size: 14px;
-  line-height: 22px;
+  line-height: 26px;
   color: #666;
   -webkit-box-shadow: 0px 10px 40px -5px rgba(0, 0, 0, 0.5);
           box-shadow: 0px 10px 40px -5px rgba(0, 0, 0, 0.5);
@@ -510,6 +510,12 @@ body {
 @media screen and (max-width: 511px) {
   .menu__infoText {
     right: 35px;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .menu__infoText {
+    width: 280px;
   }
 }
 
