@@ -348,16 +348,22 @@ body {
     }
 
     &__infoIcon {
-        width: 24px;
+        width: 30px;
         opacity: 0.5;
         cursor: pointer;
+        transition: all 0.4s ease;
+        transform: translateY(6px);
+
+        &:hover {
+            opacity: 1;
+        }
     }
 
     &__infoText {
         position: absolute;
         width: 300px;
-        right: 40px;
-        padding: 15px;
+        right: 45px;
+        padding: 20px;
         box-sizing: border-box;
         background-color: white;
         transition: all 0.5s cubic-bezier(0.88, 0.04, 0, 1.15);
@@ -368,9 +374,10 @@ body {
         font-size: 14px;
         line-height: 22px;
         color: #666;
+        box-shadow: 0px 10px 40px -5px rgba(black, 0.5);
 
         @include xs {
-            right: 20px;
+            right: 35px;
         }
 
         &:before {
@@ -386,13 +393,11 @@ body {
             opacity: 0;
 
         }
-
     }
 
     &__info {
         &:hover {
             .menu__infoText {
-
                 transform: translate(15px, 20px);
                 opacity: 1;
                 visibility: visible;

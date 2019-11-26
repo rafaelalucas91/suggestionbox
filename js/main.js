@@ -11,7 +11,7 @@ window.addEventListener("load", event => {
         reload = document.querySelector('.reload');
 
     const events = () => {
-        serviceWorker();
+        //serviceWorker();
         btnSend.addEventListener('click', foldPaper);
         btnAnother.addEventListener('click', sendAnother);
         input.addEventListener('keyup', errorValidation);
@@ -86,15 +86,15 @@ window.addEventListener("load", event => {
     }
 
     // PWA 
+
     const serviceWorker = () => {
         if ('serviceWorker' in navigator) {
             try {
                 navigator.serviceWorker.register('sw.js')
-            } catch (error) {
-
-            }
+            } catch (error) {}
         }
     }
+
 
 
     events();
