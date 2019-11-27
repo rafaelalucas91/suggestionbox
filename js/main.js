@@ -12,7 +12,9 @@ window.addEventListener("load", event => {
 
 
 
-  const showEasterEgg = ({ keyCode }) => {
+  const showEasterEgg = ({
+    keyCode
+  }) => {
     if (keyCode == 117) {
       addEasterEgg();
     }
@@ -43,7 +45,7 @@ window.addEventListener("load", event => {
     const emailEndpoint = 'https://functionstestlogs.azurewebsites.net/api/SendEmail?code=1k9alxFBsZFlF0mHUlV/1wG58CLO0Xo79aoAZOh4af1p1SWi3fkCgQ==';
     const data = JSON.stringify({
       "fromName": input.value,
-      "toEmail": 'ricardo.melo@fullsix.pt',
+      "toEmail": 'rafaela.lucas@fullsix.pt',
       "fromEmail": "caixadesugestoes@fullsix.pt",
       "emailSubject": `Nova mensagem da caixa de sugestões`,
       "emailMessage": textarea.value
@@ -54,8 +56,12 @@ window.addEventListener("load", event => {
     })
   }
 
-  const errorValidation = ({ currentTarget }) => {
-    const { value } = currentTarget;
+  const errorValidation = ({
+    currentTarget
+  }) => {
+    const {
+      value
+    } = currentTarget;
     if (value) {
       formError.classList.remove('showError');
     }
@@ -100,7 +106,7 @@ window.addEventListener("load", event => {
     if ('serviceWorker' in navigator) {
       try {
         navigator.serviceWorker.register('sw.js')
-      } catch (error) { }
+      } catch (error) {}
     }
   }
 
